@@ -1,6 +1,9 @@
 name: 定期実行 - 自動車学校予約スクレイピング
 
 on:
+  push:
+    branches:
+      - main  # mainブランチへのプッシュで実行される
   schedule:
     # 1分おきに実行（UTC時間で指定）
     - cron: '* * * * *'
