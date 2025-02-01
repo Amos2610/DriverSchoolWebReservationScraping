@@ -5,7 +5,7 @@ on:
   #   branches:
   #     - main  # mainブランチへのプッシュで実行される
   schedule:
-    - cron: '*/5 * * * *'  # 5分ごとに実行
+    - cron: '0 * * * *'  # 毎時0分に実行
 
 jobs:
   run-scraping:
