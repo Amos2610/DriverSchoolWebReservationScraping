@@ -1,11 +1,13 @@
 name: 定期実行 - 自動車学校予約スクレイピング
-
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
   # push:
   #   branches:
   #     - main  # mainブランチへのプッシュで実行される
+  # 5分おきに実行
   schedule:
-    - cron: '15 * * * *'  # 15分に実行 (UTC時間)
+    # - cron: '*/5 * * * *'
+    - cron: '30 2 * * *' #(JST 11:30)
 
 jobs:
   run-scraping:
