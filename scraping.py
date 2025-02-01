@@ -14,7 +14,7 @@ from email.mime.multipart import MIMEMultipart
 load_dotenv()
 
 # 初期設定
-is_debug = True  # デバッグモード
+is_debug = False  # デバッグモード
 
 # 環境変数から取得
 URL = os.getenv("URL")
@@ -170,6 +170,8 @@ class ReservationChecker:
 def main():
     print("\n===== メイン処理を開始します =====")
     # 初期設定
+    # 初期設定
+    is_debug = False  # デバッグモード
     is_send_email = True # メール送信フラグ
     retry_count = 3 # リトライ回数
     print("リトライ回数: ", retry_count, "回")
@@ -271,20 +273,21 @@ def main():
             message = "予約可能な日はありません。"
             message += "\n\n予約の確認はこちらから: \n"
             message += URL
-            # メールに送信
-            print("メールに送信します。", "to: ", TO_EMAIL, "cc: ", CC_EMAILS)
-            send_email = SendEmail()
-            response = send_email.send_email(
-                subject="直方自動車学校 予約可能日のお知らせ",
-                body=message,
-                to_email=TO_EMAIL,
-                cc_emails=CC_EMAILS
-            )
-            # 送信結果を確認
-            if response:
-                print("メッセージ送信に成功しました。")
-            else:
-                print("メッセージ送信に失敗しました。")
+            if is_debug is True:
+                # メールに送信
+                print("メールに送信します。", "to: ", TO_EMAIL, "cc: ", CC_EMAILS)
+                send_email = SendEmail()
+                response = send_email.send_email(
+                    subject="直方自動車学校 予約可能日のお知らせ",
+                    body=message,
+                    to_email=TO_EMAIL,
+                    cc_emails=CC_EMAILS
+                )
+                # 送信結果を確認
+                if response:
+                    print("メッセージ送信に成功しました。")
+                else:
+                    print("メッセージ送信に失敗しました。")
     else:
         print("メール通知はOFFです。")
 
