@@ -11,6 +11,16 @@ on:
 jobs:
   run-scraping:
     runs-on: macos-latest
+    env:
+      URL: ${{ secrets.URL }}
+      USER_ID: ${{ secrets.USER_ID }}
+      PASSWORD: ${{ secrets.PASSWORD }}
+      FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
+      APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+      TO_EMAIL: ${{ secrets.TO_EMAIL }}
+      TO_DEBUG_EMAIL: ${{ secrets.TO_DEBUG_EMAIL }}
+      CC_EMAILS: ${{ secrets.CC_EMAILS }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
