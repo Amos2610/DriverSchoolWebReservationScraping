@@ -1,4 +1,4 @@
-name: 定期実行 - 自動車学校予約スクレイピング
+name: 定期実行 - 自動車学校予約通知
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
   schedule:
