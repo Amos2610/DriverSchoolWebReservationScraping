@@ -6,8 +6,7 @@ on:
   #     - main  # mainブランチへのプッシュで実行される
   # 5分おきに実行
   schedule:
-    # - cron: '*/5 * * * *'
-    - cron: '30 2 * * *' #(JST 11:30)
+    - cron: '*/10 * * * *'
 
 jobs:
   run-scraping:
