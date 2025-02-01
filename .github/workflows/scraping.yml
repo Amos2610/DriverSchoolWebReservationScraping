@@ -1,11 +1,11 @@
 name: 定期実行 - 自動車学校予約スクレイピング
 
 on:
-  push:
-    branches:
-      - main  # mainブランチへのプッシュで実行される
+  # push:
+  #   branches:
+  #     - main  # mainブランチへのプッシュで実行される
   schedule:
-    - cron: '*/10 * * * *'  # 10分ごとに実行
+    - cron: '*/5 * * * *'  # 5分ごとに実行
 
 jobs:
   run-scraping:
