@@ -26,6 +26,11 @@ jobs:
           source venv/bin/activate
           pip install -r requirements.txt
 
+      - name: Install ChromeDriver
+        run: |
+          brew install chromedriver
+          which chromedriver
+
       - name: Run scraping script
         run: |
           venv/bin/python scraping.py
