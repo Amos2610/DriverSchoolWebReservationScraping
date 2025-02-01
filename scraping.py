@@ -212,16 +212,20 @@ def main():
             # ReservationCheckerを用いて予約情報を取得
             reservation_checker.get_reservation_dates()
 
-            # 次の週に移動
-            driver_handler.execute_script("$('#btnNextWeek').click();")
+            for i in range(4):
+                # 次の週に移動
+                driver_handler.execute_script("$('#btnNextWeek').click();")
 
-            # 次の週の情報が表示されるまで待機
-            WebDriverWait(driver_handler.driver, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, ".blocks .lbl"))
-            )
+                # 次の週の情報が表示されるまで待機
+                WebDriverWait(driver_handler.driver, 10).until(
+                    EC.presence_of_element_located((By.CSS_SELECTOR, ".blocks .lbl"))
+                )
+                #TODO: ここで2秒待たないと次の週の情報が取得できない
+                time.sleep(2)
 
-            # ReservationCheckerを用いて予約情報を取得
-            reservation_dict = reservation_checker.get_reservation_dates()
+                # ReservationCheckerを用いて予約情報を取得
+                reservation_dict = reservation_checker.get_reservation_dates()
+            
             reservation_checker.print_reservations() # debug用
 
             # 成功したらフラグを立てる
