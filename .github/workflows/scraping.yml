@@ -1,46 +1,46 @@
-name: 定期実行 - 自動車学校予約スクレイピング
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on:
+#name: 定期実行 - 自動車学校予約スクレイピング
+#run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+#on:
   # push:
   #   branches:
   #     - main  # mainブランチへのプッシュで実行される
   # 5分おきに実行
-  schedule:
-    - cron: '*/10 * * * *'
+  #schedule:
+  #  - cron: '*/10 * * * *'
 
-jobs:
-  run-scraping:
-    runs-on: macos-latest
-    env:
-      URL: ${{ secrets.URL }}
-      USER_ID: ${{ secrets.USER_ID }}
-      PASSWORD: ${{ secrets.PASSWORD }}
-      FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
-      APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
-      TO_EMAIL: ${{ secrets.TO_EMAIL }}
-      TO_DEBUG_EMAIL: ${{ secrets.TO_DEBUG_EMAIL }}
-      CC_EMAILS: ${{ secrets.CC_EMAILS }}
+#jobs:
+#  run-scraping:
+#    runs-on: macos-latest
+#    env:
+#      URL: ${{ secrets.URL }}
+#      USER_ID: ${{ secrets.USER_ID }}
+#      PASSWORD: ${{ secrets.PASSWORD }}
+#      FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
+#      APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+#      TO_EMAIL: ${{ secrets.TO_EMAIL }}
+#      TO_DEBUG_EMAIL: ${{ secrets.TO_DEBUG_EMAIL }}
+#      CC_EMAILS: ${{ secrets.CC_EMAILS }}
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+#    steps:
+#      - name: Checkout repository
+#        uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11.3'
+#      - name: Set up Python
+#        uses: actions/setup-python@v4
+#        with:
+#          python-version: '3.11.3'
 
-      - name: Install dependencies
-        run: |
-          python -m venv venv
-          source venv/bin/activate
-          pip install -r requirements.txt
+#      - name: Install dependencies
+#        run: |
+#          python -m venv venv
+#          source venv/bin/activate
+#          pip install -r requirements.txt
 
-      - name: Install ChromeDriver
-        run: |
-          brew install chromedriver
-          which chromedriver
+#      - name: Install ChromeDriver
+#        run: |
+#          brew install chromedriver
+#          which chromedriver
 
-      - name: Run scraping script
-        run: |
-          venv/bin/python scraping.py
+#      - name: Run scraping script
+#        run: |
+#          venv/bin/python scraping.py
